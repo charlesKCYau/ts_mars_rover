@@ -1,0 +1,20 @@
+{
+  "name": "ts_mars_rover",
+  "version": "1.0.0",
+  "description": "The project is made of typescript with JavaScript. Enclosed herewith the 2 requirement pdf file.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charlesKCYau/ts_mars_rover.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/charlesKCYau/ts_mars_rover/issues"
+  },
+  "homepage": "https://github.com/charlesKCYau/ts_mars_rover#readme"
+}
