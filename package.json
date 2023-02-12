@@ -4,7 +4,7 @@
   "description": "The project is made of typescript with JavaScript. Enclosed herewith the 2 requirement pdf file.",
   "main": "index.ts",
   "scripts": {
-    "start": "nodemon src/index.ts",
+    "start": "nodemon src/main.ts",
     "test": "jest",
     "build": "tsc --project tsconfig.build.json"
   },
