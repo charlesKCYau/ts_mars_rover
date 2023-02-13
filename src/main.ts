@@ -28,7 +28,7 @@ for (let i=1; i<array.length; i=i+2) {
         // output the final position, eg. 1 3 N, 5 1 E
 
         //Technically, if there are some objects other than Rover, we just need to mimic the practice of Rover and function moveRover.
-        
+
         const instruction = array[i+1];
         if (examMovement(instruction.trim())) {
             rover = moveRover(plateau, rover, instruction);
