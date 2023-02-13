@@ -39,11 +39,6 @@ export function checkValidPos (plateau : Plateau, number1 : number, number2 : nu
         return false;
 }
 
-// export function setupRover (number1 : number, number2 : number, someOriental : OrientalType) {
-//     const rover : Rover = {x: number1, y: number2, oriental: someOriental};
-//     return rover;
-// }
-
 export function examMovement (instruction : string) {
     let valid = true;
     for (let i=0; i<instruction.length; i++){
