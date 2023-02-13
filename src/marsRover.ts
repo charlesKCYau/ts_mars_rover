@@ -1,12 +1,15 @@
+//setup Coord for the elements of Plateau
 type Coord = {
 	x: number;
 	y: number;
 };
 
+//setup Plateau
 type Plateau = {
 	array: Array<Coord>;
 };
 
+//setup Rover and the necessary elements
 const ORIENTAL = ['N', 'E', 'S', 'W'] as const;
 export type OrientalType = typeof ORIENTAL[number];
 
@@ -16,9 +19,11 @@ export type Rover = {
     oriental: OrientalType;
 }
 
+//setup the instruction elements
 const MOVEMENT = ['L', 'R', 'M'] as const;
 type MovementType = typeof MOVEMENT[number];
 
+//setup the function to create Plateau
 export function createPlateau(number1 : number, number2 : number) : Plateau {
     const plateau: Plateau = { array: [] };
     for (let i=0; i<=number1; i++){
@@ -32,6 +37,7 @@ export function createPlateau(number1 : number, number2 : number) : Plateau {
     return plateau;
 }
 
+//setup the function to check if a valid position in the Plateau
 export function checkValidPos (plateau : Plateau, number1 : number, number2 : number) {
     if (plateau.array.filter(e => e.x === number1 && e.y === number2).length > 0)
         return true;
@@ -39,6 +45,7 @@ export function checkValidPos (plateau : Plateau, number1 : number, number2 : nu
         return false;
 }
 
+//setup the function to check if the string of movement instructions is valid
 export function examMovement (instruction : string) {
     let valid = true;
     for (let i=0; i<instruction.length; i++){
@@ -50,6 +57,7 @@ export function examMovement (instruction : string) {
     return valid;
 }
 
+//setup the function to rotate the orientation to left for the Rover
 export function rotateL (rover : Rover) {
     //N -> W -> S -> E -> N
     if (rover.oriental === 'N') {
@@ -64,6 +72,7 @@ export function rotateL (rover : Rover) {
     return rover;
 }
 
+//setup the function to rotate the orientation to right for the Rover
 export function rotateR (rover : Rover) {
     //N -> E -> S -> W -> N
     if (rover.oriental === 'N') {
@@ -78,6 +87,7 @@ export function rotateR (rover : Rover) {
     return rover;
 }
 
+//setup the function to move forward for the Rover
 export function moveForward (plateau : Plateau, rover : Rover) {
     if (rover.oriental === 'N' && checkValidPos(plateau, rover.x, rover.y + 1)) {
         rover.y += 1;
@@ -91,6 +101,7 @@ export function moveForward (plateau : Plateau, rover : Rover) {
     return rover;
 }
 
+//setup the function to move the Rover with the movement instructions
 export function moveRover (plateau : Plateau, rover : Rover, instruction : string) {
     for (let i=0; i<instruction.length; i++){
         if (instruction[i] === 'L') {
