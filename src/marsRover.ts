@@ -14,6 +14,14 @@ const ORIENTAL = ['N', 'E', 'S', 'W'] as const;
 export type OrientalType = typeof ORIENTAL[number];
 
 export type Rover = {
+    name: string;
+    x: number;
+    y: number;
+    oriental: OrientalType;
+}
+
+export type AnotherVehicle = {
+    name: string;
     x: number;
     y: number;
     oriental: OrientalType;
@@ -57,60 +65,76 @@ export function examMovement (instruction : string) {
     return valid;
 }
 
+function isRover(vehicle : Rover | AnotherVehicle): vehicle is Rover {
+    return (vehicle as Rover).name === 'Rover';
+}
+
 //setup the function to rotate the orientation to left for the Rover
-export function rotateL (rover : Rover) {
+export function rotateL (vehicle : Rover | AnotherVehicle) {
     //N -> W -> S -> E -> N
-    if (rover.oriental === 'N') {
-        rover.oriental = 'W';
-    } else if (rover.oriental === 'W') {
-        rover.oriental = 'S';
-    } else if (rover.oriental === 'S') {
-        rover.oriental = 'E';
-    } else if (rover.oriental === 'E') {
-        rover.oriental = 'N';
-    } 
-    return rover;
+    if (isRover(vehicle)) {
+        if (vehicle.oriental === 'N') {
+            vehicle.oriental = 'W';
+        } else if (vehicle.oriental === 'W') {
+            vehicle.oriental = 'S';
+        } else if (vehicle.oriental === 'S') {
+            vehicle.oriental = 'E';
+        } else if (vehicle.oriental === 'E') {
+            vehicle.oriental = 'N';
+        } 
+    }
+    
+    return vehicle;
 }
 
 //setup the function to rotate the orientation to right for the Rover
-export function rotateR (rover : Rover) {
+export function rotateR (vehicle : Rover | AnotherVehicle) {
     //N -> E -> S -> W -> N
-    if (rover.oriental === 'N') {
-        rover.oriental = 'E';
-    } else if (rover.oriental === 'E') {
-        rover.oriental = 'S';
-    } else if (rover.oriental === 'S') {
-        rover.oriental = 'W';
-    } else if (rover.oriental === 'W') {
-        rover.oriental = 'N';
-    } 
-    return rover;
+    if (isRover(vehicle)) {
+        if (vehicle.oriental === 'N') {
+            vehicle.oriental = 'E';
+        } else if (vehicle.oriental === 'E') {
+            vehicle.oriental = 'S';
+        } else if (vehicle.oriental === 'S') {
+            vehicle.oriental = 'W';
+        } else if (vehicle.oriental === 'W') {
+            vehicle.oriental = 'N';
+        }
+    }
+
+    return vehicle;
 }
 
 //setup the function to move forward for the Rover
-export function moveForward (plateau : Plateau, rover : Rover) {
-    if (rover.oriental === 'N' && checkValidPos(plateau, rover.x, rover.y + 1)) {
-        rover.y += 1;
-    } else if (rover.oriental === 'E' && checkValidPos(plateau, rover.x + 1, rover.y)) {
-        rover.x += 1;
-    } else if (rover.oriental === 'S' && checkValidPos(plateau, rover.x, rover.y - 1)) {
-        rover.y += -1;
-    } else if (rover.oriental === 'W' && checkValidPos(plateau, rover.x - 1, rover.y)) {
-        rover.x += -1;
-    } 
-    return rover;
+export function moveForward (plateau : Plateau, vehicle : Rover | AnotherVehicle) {
+    if (isRover(vehicle)) {
+        if (vehicle.oriental === 'N' && checkValidPos(plateau, vehicle.x, vehicle.y + 1)) {
+            vehicle.y += 1;
+        } else if (vehicle.oriental === 'E' && checkValidPos(plateau, vehicle.x + 1, vehicle.y)) {
+            vehicle.x += 1;
+        } else if (vehicle.oriental === 'S' && checkValidPos(plateau, vehicle.x, vehicle.y - 1)) {
+            vehicle.y += -1;
+        } else if (vehicle.oriental === 'W' && checkValidPos(plateau, vehicle.x - 1, vehicle.y)) {
+            vehicle.x += -1;
+        } 
+    }
+
+    return vehicle;
 }
 
 //setup the function to move the Rover with the movement instructions
-export function moveRover (plateau : Plateau, rover : Rover, instruction : string) {
-    for (let i=0; i<instruction.length; i++){
-        if (instruction[i] === 'L') {
-            rover = rotateL(rover);
-        } else if (instruction[i] === 'R') {
-            rover = rotateR(rover);
-        } else if (instruction[i] === 'M') {
-            rover = moveForward(plateau, rover);
+export function moveVehical (plateau : Plateau, vehicle : Rover | AnotherVehicle, instruction : string) {
+    if (isRover(vehicle)) {
+        for (let i=0; i<instruction.length; i++){
+            if (instruction[i] === 'L') {
+                vehicle = rotateL(vehicle);
+            } else if (instruction[i] === 'R') {
+                vehicle = rotateR(vehicle);
+            } else if (instruction[i] === 'M') {
+                vehicle = moveForward(plateau, vehicle);
+            }
         }
     }
-    return rover;
+    
+    return vehicle;
 }
