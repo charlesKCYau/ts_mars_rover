@@ -5,7 +5,8 @@ import { createPlateau, checkValidPos, Rover, examMovement, OrientalType, moveRo
 
 const fs = require("fs");
 const array: string[] = fs.readFileSync('input.txt', 'utf8').toString().split('\n');
-const coord : string[] = array[0].split(" ");
+let coord : string[] = array[0].trim().split(" ");
+coord = coord.filter(a => a !== "");
 const plateau = createPlateau(Number.parseInt(coord[0]), Number.parseInt(coord[1]));
 
 for (let i=1; i<array.length; i=i+2) {
@@ -15,7 +16,9 @@ for (let i=1; i<array.length; i=i+2) {
 
     //Technically the below logic provide a flexibility to  handle with what the Plateau is in different shape
 
-    const rover1 : string[] = array[i].split(" ");
+    let rover1 : string[] = array[i].trim().split(" ");
+    rover1 = rover1.filter(a => a !== "");
+
     if (checkValidPos(plateau, Number.parseInt(rover1[0]), Number.parseInt(rover1[1]))) {
 
         // setup a Rover e.g. with setupRover (plateau, 1, 2, N)
