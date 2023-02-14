@@ -10,7 +10,6 @@ Input file sample:
 |*LMLMLMLMM*|
 |*3 3 E*|
 |*MMRMMRMRRM*|
-|------|
 
 The above first line is the upper right coordinate of Plateau.
 The above second line is the initial position and orientation of the Rover.
