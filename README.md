@@ -7,10 +7,10 @@ Start running the application by typing in
 
 **npm start**
 
-to run the application
+
 
 Performing the test case by typing in
 
 **npm test**
 
-to perform testing with the functions
+
