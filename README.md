@@ -1,5 +1,5 @@
 # ts_mars_rover
-The project is made of typescript with JavaScript. Enclosed herewith 1 UML diagram to declare the type of Plateau and Rover and the program flow.
+The project is made of typescript with JavaScript. Enclosed herewith 1 UML diagram (mars_rover.png) to declare the type of Plateau and Rover and the program flow.
 
 Before starting the application, we have to prepare the input file input.txt beforehand.
 
