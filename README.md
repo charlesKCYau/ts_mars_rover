@@ -4,11 +4,13 @@ The project is made of typescript with JavaScript. Enclosed herewith 1 UML diagr
 Before starting the application, we have to prepare the input file input.txt beforehand.
 
 Input file sample:
-*5 5*
-*1 2 N*
-*LMLMLMLMM*
-*3 3 E*
-*MMRMMRMRRM*
+|------|
+|*5 5*|
+|*1 2 N*|
+|*LMLMLMLMM*|
+|*3 3 E*|
+|*MMRMMRMRRM*|
+|------|
 
 The above first line is the upper right coordinate of Plateau.
 The above second line is the initial position and orientation of the Rover.
