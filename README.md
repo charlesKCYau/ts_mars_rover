@@ -13,7 +13,7 @@ Input file sample:
 
 The above first line is the upper right coordinate of Plateau.
 The above second line is the initial position and orientation of the Rover.
-The above third line is the movement instructions. L means rotate 90 degrees to left, R means rotate 90 degrees to right (it only shows at fifthl ine), and M means Rover move forward one step.
+The above third line is the movement instructions. L means rotate 90 degrees to left, R means rotate 90 degrees to right (it only shows at fifth line), and M means Rover move forward one step.
 
 N.B. We assume if the Rover can't move forward with some step instructions, it will skip to next one.
 
