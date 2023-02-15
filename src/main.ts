@@ -1,4 +1,4 @@
-import { createPlateau, checkValidPos, Rover, examMovement, OrientalType, moveVehical } from "./marsRover";
+import { createPlateau, checkValidPos, Rover, examMovement, OrientalType, moveVehicle } from "./marsRover";
 
 // base on the "zero" line to set up Plateau, eg. 5 5
 // and setup a plateau = createPlateau (5, 5);
@@ -19,6 +19,7 @@ for (let i=1; i<array.length; i=i+2) {
     let rover1 : string[] = array[i].trim().split(" ");
     rover1 = rover1.filter(a => a !== "");    //filter out the empty string item in case there are more than one spaces between the parameters
 
+    //check if the initial position of Rover is valid at the Plateau
     if (checkValidPos(plateau, Number.parseInt(rover1[0]), Number.parseInt(rover1[1]))) {
 
         // setup a Rover e.g. with setupRover (plateau, 1, 2, N)
@@ -34,7 +35,7 @@ for (let i=1; i<array.length; i=i+2) {
 
         const instruction = array[i+1];
         if (examMovement(instruction.trim())) {
-            rover = moveVehical(plateau, rover, instruction);
+            rover = moveVehicle(plateau, rover, instruction);
             console.log(`${rover.x} ${rover.y} ${rover.oriental}`);
         } else {
             console.log("invalid instruction!!!");

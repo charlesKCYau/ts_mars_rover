@@ -1,4 +1,4 @@
-import { createPlateau, rotateR, rotateL, moveForward, moveVehical } from "./marsRover";
+import { createPlateau, rotateR, rotateL, moveForward, moveVehicle } from "./marsRover";
 describe("test createPlateau function", () => {
     it("should return an 4x4 array for createPlateau(3,3)", () => {
       expect(createPlateau(3, 3)).toStrictEqual({array : [
@@ -25,8 +25,8 @@ describe("test rotate function", () => {
 
 describe("test full function", () => {
   it("move forward successfully", () => {
-    expect(moveVehical(createPlateau(5, 5),{name: 'Rover', x: 1, y: 2, oriental: 'N'}, 'LMLMLMLMM')).toStrictEqual({name: 'Rover', x: 1, y: 3, oriental: 'N'});
-    expect(moveVehical(createPlateau(5, 5),{name: 'Rover', x: 3, y: 3, oriental: 'E'}, 'MMRMMRMRRM')).toStrictEqual({name: 'Rover', x: 5, y: 1, oriental: 'E'});
+    expect(moveVehicle(createPlateau(5, 5),{name: 'Rover', x: 1, y: 2, oriental: 'N'}, 'LMLMLMLMM')).toStrictEqual({name: 'Rover', x: 1, y: 3, oriental: 'N'});
+    expect(moveVehicle(createPlateau(5, 5),{name: 'Rover', x: 3, y: 3, oriental: 'E'}, 'MMRMMRMRRM')).toStrictEqual({name: 'Rover', x: 5, y: 1, oriental: 'E'});
   });
 });
 

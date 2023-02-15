@@ -123,7 +123,7 @@ export function moveForward (plateau : Plateau, vehicle : Rover | AnotherVehicle
 }
 
 //setup the function to move the Rover with the movement instructions
-export function moveVehical (plateau : Plateau, vehicle : Rover | AnotherVehicle, instruction : string) {
+export function moveVehicle (plateau : Plateau, vehicle : Rover | AnotherVehicle, instruction : string) {
     if (isRover(vehicle)) {
         for (let i=0; i<instruction.length; i++){
             if (instruction[i] === 'L') {
